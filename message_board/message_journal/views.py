@@ -27,7 +27,7 @@ def get_or_make_post(data):
 def create_post(request):
     data = loads(request.body)
     text = data["text"]
-    (new_project, post) = get_or_make_post(data)
+    post = get_or_make_post(data)
     post.text = text
     post.save()
     return HttpResponse("OK")

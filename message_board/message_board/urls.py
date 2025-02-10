@@ -22,3 +22,4 @@ urlpatterns = [
 ]
 
 urlpatterns += [path('', include('message_journal.urls'))]
+urlpatterns += [path('', include('rest_message_api.urls'))]

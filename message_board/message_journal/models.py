@@ -8,4 +8,4 @@ class MessagePost(models.Model):
     text = models.TextField()
 
     def __str__(self):
-        return "{}: {}...".format(self.project.name, self.text[:100])
+        return "{}: {}...".format(self.date, self.text[:100])

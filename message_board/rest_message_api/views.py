@@ -1,6 +1,7 @@
 from json import loads, decoder
 from django.http import HttpResponse
 from django.urls import reverse
+from django.conf import settings
 from requests import post
 from django.middleware.csrf import get_token
 
@@ -13,12 +14,8 @@ def message(request):
         print("---------------------")
     except decoder.JSONDecodeError:
         return HttpResponse("Error: This is not vaild JSON.", status=500)
-    csrf_token = get_token()
     response = post(settings.DOMAIN + reverse("create_post"), headers={
-        "Connection": "Keep-Alive",
-        "X-CSRFToken": csrf_token
-    }, cookies={
-        "csrftoken": csrf_token
+        "Connection": "Keep-Alive"
     }, json=update_data)
     if response.text != "OK":
         print(response.text)
