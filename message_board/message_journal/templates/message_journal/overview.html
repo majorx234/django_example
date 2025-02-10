@@ -1,0 +1,20 @@
+{% load static %}
+<html lang="de">
+<head>
+    <title>Message Overview</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg">
+    <link rel="stylesheet" href="{% static 'message_journal/styles.css' %}" />
+</head>
+<body>
+<div class="content">
+    <h1 class="messageHeading">Message Overview</h1>
+    <div class="post">
+        <ul>
+            {% for message in messages %}
+            <li><p>{{ message.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>
