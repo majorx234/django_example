@@ -21,13 +21,15 @@ def message_overview(request):
 
 def get_or_make_post(data):
     post = MessagePost(text="")
+    print(data)
+    if data["text"]:
+        text = data["text"]
+        post.text = text
     return post
 
 
 def create_post(request):
     data = loads(request.body)
-    text = data["text"]
     post = get_or_make_post(data)
-    post.text = text
     post.save()
     return HttpResponse("OK")
